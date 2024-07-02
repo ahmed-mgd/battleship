@@ -14,3 +14,5 @@ class Ship {
     return this.numHits === this.length;
   }
 }
+
+export default Ship;
