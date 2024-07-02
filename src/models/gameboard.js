@@ -14,16 +14,16 @@ class Gameboard {
     this.grid = new Array(BOARD_SIZE).fill(
       new Array(BOARD_SIZE).fill(CellStates.UNOCCUPIED)
     );
-    this.ships = createShips();
+    this.ships = this.createShips();
   }
 
   createShips() {
     let ships = [];
     const numClasses = 5;
     const sizes = [5, 4, 3, 3, 2];
-    for (let numShips = 1; i <= numClasses; numShips++) {
+    for (let numShips = 1; numShips <= numClasses; numShips++) {
       for (let i = 0; i < numShips; i++) {
-        ships.push(new Ship(numShips - 1));
+        ships.push(new Ship(sizes[numShips - 1]));
       }
     }
     return ships;
@@ -51,10 +51,10 @@ class Gameboard {
     if (cell === CellStates.HIT || cell === CellStates.MISS) return;
 
     if (cell === CellStates.UNOCCUPIED) {
-      cell = CellStates.MISS;
+      this.grid[x][y] = CellStates.MISS;
     } else {
       cell.hit();
-      cell = CellStates.HIT;
+      this.grid[x][y] = CellStates.HIT;
     }
   }
 
