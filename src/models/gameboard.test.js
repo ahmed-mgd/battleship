@@ -1,27 +1,28 @@
 import Gameboard from "./gameboard";
+import Ship from "./ship";
 
 const board = new Gameboard();
 
 test("places size 5 ship vertically", () => {
   const x = 0;
   const y = 0;
-  const ship = board.ships[0];
-  board.placeShip(ship, x, y);
+  const length = 5;
+  const isVertical = true;
+  board.placeShip(length, x, y, isVertical);
 
-  for (let i = 0; i < ship.length; i++) {
-    expect(board.grid[0][i]).toBe(ship);
+  for (let i = 0; i < length; i++) {
+    expect(board.grid[0][i]).not.toBe(null);
   }
 });
 
 test("places size 4 horizontally", () => {
   const x = 1;
   const y = 0;
-  const ship = board.ships[1];
-  ship.vertical = false;
-  board.placeShip(ship, x, y);
-
-  for (let i = 1; i < ship.length; i++) {
-    expect(board.grid[i][0]).toBe(ship);
+  const length = 4;
+  const isVertical = false;
+  board.placeShip(length, x, y, isVertical);
+  for (let i = 1; i < length; i++) {
+    expect(board.grid[i][0]).not.toBe(null);
   }
 });
 
