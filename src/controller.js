@@ -43,7 +43,7 @@ function randomShipLayout(player) {
 }
 
 function processGameOver(winner) {
-  View.endGame();
+  View.endGame(winner);
 }
 
 function switchTurn() {

@@ -11,16 +11,19 @@
       <button id="start-button">START</button>
     </dialog>
     <dialog id="game-over-screen">
+      <h1 id="winner"></h1>
       <button id="play-again-button">PLAY AGAIN</button>
     </dialog>
     <div id="header">
       <h1>Battleship</h1>
     </div>
     <div id="main">
+      <div id="message"></div>
       <div id="boards">
         <div id="user-board" class="board"></div>
         <div id="cpu-board" class="board"></div>
       </div>
+      <div id="fleets"></div>
     </div>
     <script type="module" src="/main.js"></script>
   </body>

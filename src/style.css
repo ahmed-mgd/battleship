@@ -14,13 +14,14 @@
 
 button {
   padding: 0.5rem;
+  background-color: #217685;
+  color: white;
 }
 
 #setup-menu, #game-over-screen {
   padding: 5rem;
   margin: auto;
   border-radius: 20px;
-  position: absolute;
 }
 
 #header {
@@ -53,19 +54,25 @@ button {
   height: var(--cell-size);
   border: 1px black solid;
   background-color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--cell-size) - 1rem);
+  color: black;
 }
 
 .selectable:hover {
-  background-color: rgb(184, 218, 231);
+  background-color: rgb(190, 226, 240);
   cursor: crosshair;
 }
 
 .occupied {
-  background-color: rgba(128, 128, 128, 0.63);
+  background-color: rgba(52, 14, 155, 0.705);
 }
 
 .miss {
-  background-color: rgb(90, 128, 197);
+  background-color: rgb(141, 141, 141);
   border-color: rgb(0, 45, 128);
 }
 

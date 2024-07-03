@@ -5,6 +5,7 @@ export const BOARD_SIZE = 10;
 export function markHit(player, x, y) {
   const cells = player.isUser ? userCells : cpuCells;
   cells[x][y].classList.add("hit");
+  cells[x][y].textContent = "X";
 }
 
 export function markMiss(player, x, y) {
@@ -52,7 +53,8 @@ export function startGame() {
   });
 }
 
-export function endGame() {
+export function endGame(winner) {
+  winnerText.textContent = winner.isUser ? "You win!" : "You lose :(";
   gameOverScreen.showModal();
 }
 
@@ -72,6 +74,8 @@ const startBtn = document.querySelector("#start-button");
 const setupMenu = document.querySelector("#setup-menu");
 const playAgainBtn = document.querySelector("#play-again-button");
 const gameOverScreen = document.querySelector("#game-over-screen");
+
+const winnerText = document.querySelector("#winner");
 const userBoardElem = document.querySelector("#user-board");
 const cpuBoardElem = document.querySelector("#cpu-board");
 
@@ -82,7 +86,7 @@ startBtn.addEventListener("click", () => {
 playAgainBtn.addEventListener("click", () => {
   gameOverScreen.close();
   Controller.processReset();
-})
+});
 
 let userCells;
 let cpuCells;
