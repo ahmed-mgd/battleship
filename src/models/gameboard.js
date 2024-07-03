@@ -18,19 +18,6 @@ class Gameboard {
     this.ships = [];
   }
 
-  // DEPRECATED
-  createShips() {
-    let ships = [];
-    const numClasses = 5;
-    const sizes = [5, 4, 3, 3, 2];
-    for (let numShips = 1; numShips <= numClasses; numShips++) {
-      for (let i = 0; i < numShips; i++) {
-        ships.push(new Ship(sizes[numShips - 1]));
-      }
-    }
-    return ships;
-  }
-
   placeShip(length, minX, minY, isVertical) {
     let squaresLeft = length;
     let currentX = minX;

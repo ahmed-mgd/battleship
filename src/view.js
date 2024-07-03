@@ -29,11 +29,11 @@ function createCells(board) {
   return cells;
 }
 
-function occupyCells(player) {
+export function displayShips(player) {
   const boardModel = player.board.grid;
-  const cells = player.isUser() ? userCells : cpuCells;
+  const cells = player.isUser ? userCells : cpuCells;
   boardModel.forEach((row, i) => {
-    row.forEach((cellModel) => {
+    row.forEach((cellModel, j) => {
       if (cellModel !== null) {
         cells[i][j].classList.add("occupied");
       }

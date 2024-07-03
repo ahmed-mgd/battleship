@@ -12,6 +12,17 @@
   margin: 0;
 }
 
+button {
+  padding: 0.5rem;
+}
+
+#setup-menu, #game-over-screen {
+  padding: 5rem;
+  margin: auto;
+  border-radius: 20px;
+  position: absolute;
+}
+
 #header {
   padding: 1.5rem;
   text-align: center;
@@ -46,6 +57,7 @@
 
 .selectable:hover {
   background-color: rgb(184, 218, 231);
+  cursor: crosshair;
 }
 
 .occupied {

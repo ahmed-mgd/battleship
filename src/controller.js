@@ -2,8 +2,48 @@ import Gameboard from "./models/gameboard";
 import Player from "./models/player";
 import * as View from "./view";
 
+const CPU_DELAY = 500;
+const SHIP_LENGTHS = [5, 4, 3, 3, 2];
+
+function canPlaceShip(player, length, minX, minY, isVertical) {
+  let squaresLeft = length;
+  let currentX = minX;
+  let currentY = minY;
+  while (isVertical && squaresLeft > 0) {
+    if (player.board.grid[currentX][currentY] !== null) return false;
+    currentY++;
+    squaresLeft--;
+  }
+  while (squaresLeft > 0) {
+    if (player.board.grid[currentX][currentY] !== null) return false;
+    currentX++;
+    squaresLeft--;
+  }
+  return true;
+}
+
+function randomShipLayout(player) {
+  for (let i = 0; i < SHIP_LENGTHS.length; i++) {
+    let length = SHIP_LENGTHS[i];
+    let randomX;
+    let randomY;
+    let isVertical;
+
+    do {
+      isVertical = Math.random() > 0.5;
+      const anyRandom = Math.floor(Math.random() * (View.BOARD_SIZE - 1));
+      const limitingRandom = Math.floor(
+        Math.random() * (View.BOARD_SIZE - length)
+      );
+      randomX = isVertical ? anyRandom : limitingRandom;
+      randomY = isVertical ? limitingRandom : anyRandom;
+    } while (!canPlaceShip(player, length, randomX, randomY, isVertical));
+    player.board.placeShip(length, randomX, randomY, isVertical);
+  }
+}
+
 function processGameOver(winner) {
-    View.endGame();
+  View.endGame();
 }
 
 function switchTurn() {
@@ -14,7 +54,9 @@ function checkGameOver(attackedPlayer) {
   if (attackedPlayer.board.allShipsSunk()) {
     const winner = attackedPlayer.isUser ? cpu : user;
     processGameOver(winner);
+    return true;
   }
+  return false;
 }
 
 function updateViewPostAttack(attackedPlayer, result, x, y) {
@@ -38,11 +80,11 @@ function cpuPlay() {
     randomY = Math.floor(Math.random() * View.BOARD_SIZE);
     result = user.board.receiveAttack(randomX, randomY);
   } while (result === null);
-
-  updateViewPostAttack(user, result, randomX, randomY);
-  checkGameOver(user);
-
-  switchTurn();
+  setTimeout(() => {
+    updateViewPostAttack(user, result, randomX, randomY);
+    checkGameOver(user);
+    switchTurn();
+  }, CPU_DELAY);
 }
 
 export function processReset() {
@@ -50,13 +92,10 @@ export function processReset() {
   user.board = new Gameboard();
   cpu.board = new Gameboard();
 
-  /**
-   * Temporary ship placement.
-   */
-  for (let i = 0; i < 10; i++) {
-    user.board.placeShip(2, i, 0, true);
-    cpu.board.placeShip(2, i, 0, true);
-  }
+  randomShipLayout(user);
+  randomShipLayout(cpu);
+
+  View.displayShips(user);
 }
 
 export function processStart() {
@@ -71,8 +110,8 @@ export function processCellClick(x, y) {
 
   if (result !== null) {
     updateViewPostAttack(cpu, result, x, y);
-    checkGameOver(cpu);
-    cpuPlay();
+    const gameOver = checkGameOver(cpu);
+    if (!gameOver) cpuPlay();
   }
 }
 
