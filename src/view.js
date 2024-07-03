@@ -70,6 +70,7 @@ export function reset() {
 
 const startBtn = document.querySelector("#start-button");
 const setupMenu = document.querySelector("#setup-menu");
+const playAgainBtn = document.querySelector("#play-again-button");
 const gameOverScreen = document.querySelector("#game-over-screen");
 const userBoardElem = document.querySelector("#user-board");
 const cpuBoardElem = document.querySelector("#cpu-board");
@@ -77,6 +78,11 @@ const cpuBoardElem = document.querySelector("#cpu-board");
 startBtn.addEventListener("click", () => {
   Controller.processStart();
 });
+
+playAgainBtn.addEventListener("click", () => {
+  gameOverScreen.close();
+  Controller.processReset();
+})
 
 let userCells;
 let cpuCells;
