@@ -52,6 +52,10 @@ export function startGame() {
   });
 }
 
+export function endGame() {
+  gameOverScreen.showModal();
+}
+
 function resetBoards() {
   userBoardElem.replaceChildren();
   cpuBoardElem.replaceChildren();
@@ -66,6 +70,7 @@ export function reset() {
 
 const startBtn = document.querySelector("#start-button");
 const setupMenu = document.querySelector("#setup-menu");
+const gameOverScreen = document.querySelector("#game-over-screen");
 const userBoardElem = document.querySelector("#user-board");
 const cpuBoardElem = document.querySelector("#cpu-board");
 

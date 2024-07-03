@@ -2,26 +2,27 @@ import Gameboard from "./models/gameboard";
 import Player from "./models/player";
 import * as View from "./view";
 
-function endGame() {
-  // Display game end message
+function processGameOver(winner) {
+    View.endGame();
 }
 
 function switchTurn() {
   userTurn = !userTurn;
 }
 
-function checkGameOver(lastPlayer) {
-  if (lastPlayer.board.allShipsSunk()) {
-    endGame();
+function checkGameOver(attackedPlayer) {
+  if (attackedPlayer.board.allShipsSunk()) {
+    const winner = attackedPlayer.isUser ? cpu : user;
+    processGameOver(winner);
   }
 }
 
-function updateViewPostAttack(player, result, x, y) {
+function updateViewPostAttack(attackedPlayer, result, x, y) {
   if (result === 0) {
-    View.markMiss(player, x, y);
+    View.markMiss(attackedPlayer, x, y);
   }
   if (result === 1) {
-    View.markHit(player, x, y);
+    View.markHit(attackedPlayer, x, y);
   }
 }
 
@@ -70,7 +71,7 @@ export function processCellClick(x, y) {
 
   if (result !== null) {
     updateViewPostAttack(cpu, result, x, y);
-    checkGameOver(user);
+    checkGameOver(cpu);
     cpuPlay();
   }
 }
