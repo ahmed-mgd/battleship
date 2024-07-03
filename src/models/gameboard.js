@@ -11,9 +11,10 @@ Object.freeze(CellStates);
 
 class Gameboard {
   constructor() {
-    this.grid = new Array(BOARD_SIZE).fill(
-      new Array(BOARD_SIZE).fill(CellStates.UNOCCUPIED)
-    );
+    this.grid = new Array(BOARD_SIZE);
+    for (let i = 0; i < BOARD_SIZE; i++) {
+      this.grid[i] = new Array(BOARD_SIZE).fill(CellStates.UNOCCUPIED);
+    }
     this.ships = this.createShips();
   }
 
