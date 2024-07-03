@@ -29,13 +29,16 @@ function cpuPlay() {
   switchTurn();
 
   // Inefficient. Refactor sometime in the future...
+  let result;
+  let randomX;
+  let randomY;
   do {
-    const randomX = Math.floor(Math.random() * View.BOARD_SIZE);
-    const randomY = Math.floor(Math.random() * View.BOARD_SIZE);
-    const result = user.board.receiveAttack(randomX, randomY);
+    randomX = Math.floor(Math.random() * View.BOARD_SIZE);
+    randomY = Math.floor(Math.random() * View.BOARD_SIZE);
+    result = user.board.receiveAttack(randomX, randomY);
   } while (result === null);
 
-  updateViewPostAttack(user, result, x, y);
+  updateViewPostAttack(user, result, randomX, randomY);
   checkGameOver(user);
 
   switchTurn();

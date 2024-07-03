@@ -3,10 +3,12 @@ import * as Controller from "./controller";
 export const BOARD_SIZE = 10;
 
 export function markHit(player, x, y) {
+  const cells = player.isUser ? userCells : cpuCells;
   cells[x][y].classList.add("hit");
 }
 
 export function markMiss(player, x, y) {
+  const cells = player.isUser ? userCells : cpuCells;
   cells[x][y].classList.add("miss");
 }
 
@@ -35,8 +37,8 @@ function occupyCells(player) {
       if (cellModel !== null) {
         cells[i][j].classList.add("occupied");
       }
-    })
-  })
+    });
+  });
 }
 
 export function startGame() {
