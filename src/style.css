@@ -48,12 +48,16 @@
   background-color: rgb(184, 218, 231);
 }
 
-.hit {
-  background-color: rgb(127, 255, 133);
-  border-color: green;
+.occupied {
+  background-color: rgba(128, 128, 128, 0.63);
 }
 
 .miss {
+  background-color: rgb(90, 128, 197);
+  border-color: rgb(0, 45, 128);
+}
+
+.hit {
   background-color: rgba(255, 131, 127, 0.945);
   border-color: rgb(128, 0, 0);
 }
