@@ -15,9 +15,10 @@ class Gameboard {
     for (let i = 0; i < BOARD_SIZE; i++) {
       this.grid[i] = new Array(BOARD_SIZE).fill(CellStates.UNOCCUPIED);
     }
-    this.ships = this.createShips();
+    this.ships = [];
   }
 
+  // DEPRECATED
   createShips() {
     let ships = [];
     const numClasses = 5;
@@ -30,12 +31,13 @@ class Gameboard {
     return ships;
   }
 
-  placeShip(ship, minX, minY) {
-    let squaresLeft = ship.length;
+  placeShip(length, minX, minY, isVertical) {
+    let squaresLeft = length;
     let currentX = minX;
     let currentY = minY;
+    const ship = new Ship(length);
 
-    while (ship.vertical && squaresLeft > 0) {
+    while (isVertical && squaresLeft > 0) {
       this.grid[currentX][currentY] = ship;
       currentY++;
       squaresLeft--;
@@ -45,17 +47,20 @@ class Gameboard {
       currentX++;
       squaresLeft--;
     }
+    this.ships.push(ship);
   }
 
   receiveAttack(x, y) {
     const cell = this.grid[x][y];
-    if (cell === CellStates.HIT || cell === CellStates.MISS) return;
+    if (cell === CellStates.HIT || cell === CellStates.MISS) return null;
 
     if (cell === CellStates.UNOCCUPIED) {
       this.grid[x][y] = CellStates.MISS;
+      return CellStates.MISS;
     } else {
       cell.hit();
       this.grid[x][y] = CellStates.HIT;
+      return CellStates.HIT;
     }
   }
 
