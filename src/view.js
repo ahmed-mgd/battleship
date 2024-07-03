@@ -1,12 +1,12 @@
 import * as Controller from "./controller";
 
-const BOARD_SIZE = 10;
+export const BOARD_SIZE = 10;
 
-function markHit(player, x, y) {
+export function markHit(player, x, y) {
   cells[x][y].classList.add("hit");
 }
 
-function markMiss(player, x, y) {
+export function markMiss(player, x, y) {
   cells[x][y].classList.add("miss");
 }
 
