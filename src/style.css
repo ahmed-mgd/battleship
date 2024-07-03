@@ -3,7 +3,7 @@
   color: white;
   background-color: #217685;
 
-  --cell-size: 3rem;
+  --cell-size: 3.5rem;
 }
 
 * {
@@ -19,24 +19,37 @@
   border-bottom: 1px white solid;
 }
 
+#main {
+  padding: 5rem 0;
+}
+
 #boards {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7rem;
 }
 
 .board {
   display: grid;
   grid-template-columns: repeat(10, var(--cell-size));
+  border: 8px black solid;
 }
 
 .cell {
-  width: 2rem;
-  height: 2rem;
+  width: var(--cell-size);
+  height: var(--cell-size);
   border: 1px black solid;
   background-color: white;
 }
 
+.selectable:hover {
+  background-color: rgb(184, 218, 231);
+}
+
 .hit {
-  background-color: aquamarine;
+  background-color: rgb(127, 255, 133);
   border-color: green;
 }
 
