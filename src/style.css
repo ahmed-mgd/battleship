@@ -43,6 +43,10 @@ button {
   gap: 7rem;
 }
 
+#cpu-board:hover {
+  cursor: crosshair;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(10, var(--cell-size));
@@ -64,7 +68,6 @@ button {
 
 .selectable:hover {
   background-color: rgb(190, 226, 240);
-  cursor: crosshair;
 }
 
 .occupied {
@@ -72,13 +75,11 @@ button {
 }
 
 .miss {
-  background-color: rgb(141, 141, 141);
-  border-color: rgb(0, 45, 128);
+  background-color: rgb(170, 170, 170);
 }
 
 .hit {
   background-color: rgba(255, 131, 127, 0.945);
-  border-color: rgb(128, 0, 0);
 }
 
 #fleets {

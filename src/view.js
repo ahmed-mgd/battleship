@@ -4,12 +4,14 @@ export const BOARD_SIZE = 10;
 
 export function markHit(player, x, y) {
   const cells = player.isUser ? userCells : cpuCells;
+  cells[x][y].classList.remove("selectable");
   cells[x][y].classList.add("hit");
   cells[x][y].textContent = "X";
 }
 
 export function markMiss(player, x, y) {
   const cells = player.isUser ? userCells : cpuCells;
+  cells[x][y].classList.remove("selectable");
   cells[x][y].classList.add("miss");
 }
 
