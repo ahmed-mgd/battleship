@@ -15,7 +15,7 @@ export function markMiss(player, x, y) {
   cells[x][y].classList.add("miss");
 }
 
-function createCells(board) {
+export function createCells(board) {
   const cells = new Array(BOARD_SIZE);
   for (let i = 0; i < BOARD_SIZE; i++) {
     cells[i] = new Array(BOARD_SIZE);
@@ -73,6 +73,7 @@ export function reset() {
 }
 
 const startBtn = document.querySelector("#start-button");
+const shuffleBtn = document.querySelector("#shuffle-button");
 const setupMenu = document.querySelector("#setup-menu");
 const playAgainBtn = document.querySelector("#play-again-button");
 const gameOverScreen = document.querySelector("#game-over-screen");
@@ -83,6 +84,10 @@ const cpuBoardElem = document.querySelector("#cpu-board");
 
 startBtn.addEventListener("click", () => {
   Controller.processStart();
+});
+
+shuffleBtn.addEventListener("click", () => {
+  Controller.processReset();
 });
 
 playAgainBtn.addEventListener("click", () => {

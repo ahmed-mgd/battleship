@@ -1,6 +1,7 @@
 import Gameboard from "./models/gameboard";
 import Player from "./models/player";
 import * as View from "./view";
+import "./position";
 
 const CPU_DELAY = 500;
 const SHIP_LENGTHS = [5, 4, 3, 3, 2];

@@ -88,3 +88,8 @@ button {
   padding: 2rem;
   gap: 30%;
 }
+
+.ship {
+  display: flex;
+  flex-direction: row;
+}
