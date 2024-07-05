@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: "Rubik Mono One", Helvetica, Arial, sans-serif;
   color: white;
   background-color: #217685;
 
@@ -10,6 +10,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  user-select: none;
 }
 
 button {
@@ -18,17 +19,32 @@ button {
   color: white;
 }
 
-#setup-menu, #game-over-screen {
-  padding: 5rem;
+#randomize-button {
+  background-color: rgb(184, 181, 228);
+  color: black;
+}
+
+#setup-menu,
+#game-over-screen {
+  padding: 2rem;
   margin: auto;
   border-radius: 20px;
 }
 
+#go-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 #header {
-  padding: 1.5rem;
+  padding: 1.4rem;
   text-align: center;
   background-color: #17505a;
   border-bottom: 1px white solid;
+  font-size: large;
 }
 
 #main {

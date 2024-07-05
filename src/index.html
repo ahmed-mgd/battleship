@@ -2,18 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Battleship</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <dialog id="setup-menu">
-      <button id="shuffle-button">SHUFFLE BOARD</button>
+      <button id="randomize-button">RANDOMIZE BOARD</button>
       <button id="start-button">START</button>
     </dialog>
     <dialog id="game-over-screen">
-      <h1 id="winner"></h1>
-      <button id="play-again-button">PLAY AGAIN</button>
+      <div id="go-wrapper">
+        <h1 id="winner"></h1>
+        <button id="play-again-button">PLAY AGAIN</button>
+      </div>
     </dialog>
     <div id="header">
       <h1>Battleship</h1>
@@ -26,20 +34,10 @@
       </div>
       <div id="fleets">
         <div id="user-fleet" class="fleet">
-          <h2>Your Fleet</h2>
-          <div id="user-carrier"></div>
-          <div id="user-battleship"></div>
-          <div id="user-destroyer"></div>
-          <div id="user-submarine"></div>
-          <div id="user-patrol"></div>
+          <h2></h2>
         </div>
         <div id="cpu-fleet" class="fleet">
-          <h2>CPU Fleet</h2>
-          <div id="cpu-carrier"></div>
-          <div id="cpu-battleship"></div>
-          <div id="cpu-destroyer"></div>
-          <div id="cpu-submarine"></div>
-          <div id="cpu-patrol"></div>
+          <h2></h2>
         </div>
       </div>
     </div>

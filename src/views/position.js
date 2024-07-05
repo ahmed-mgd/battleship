@@ -1,4 +1,4 @@
-import { createCells } from "./view";
+import { createCells } from "../view";
 
 const board = document.querySelector("#layout-board");
 

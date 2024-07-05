@@ -73,7 +73,7 @@ export function reset() {
 }
 
 const startBtn = document.querySelector("#start-button");
-const shuffleBtn = document.querySelector("#shuffle-button");
+const randomizeBtn = document.querySelector("#randomize-button");
 const setupMenu = document.querySelector("#setup-menu");
 const playAgainBtn = document.querySelector("#play-again-button");
 const gameOverScreen = document.querySelector("#game-over-screen");
@@ -86,7 +86,7 @@ startBtn.addEventListener("click", () => {
   Controller.processStart();
 });
 
-shuffleBtn.addEventListener("click", () => {
+randomizeBtn.addEventListener("click", () => {
   Controller.processReset();
 });
 
