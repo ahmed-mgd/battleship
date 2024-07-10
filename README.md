@@ -2,6 +2,8 @@
 
 Compete against the computer in the classic game of "Battleship." Implemented using vanilla JavaScript.
 
+Live Demo: https://ahmed-mgd.github.io/battleship/
+
 ![screenshot](public/sc.png)
 
 ## Installation and Usage
